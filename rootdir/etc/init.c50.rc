@@ -635,9 +635,9 @@ service charger /sbin/healthd -c
     seclabel u:r:healthd:s0
 
 service vm_bms /system/bin/vm_bms
+    class core
     user root
     group root
-    disabled
 
 # Charger
 on charger
