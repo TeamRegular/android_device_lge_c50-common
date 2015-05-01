@@ -117,6 +117,8 @@ static char *camera_fixup_getparams(int id, const char *settings)
 
 static char *camera_fixup_setparams(int id, const char *settings)
 {
+    bool isVideo = false;
+
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
 
@@ -124,6 +126,14 @@ static char *camera_fixup_setparams(int id, const char *settings)
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
 #endif
+
+    if (params.get(android::CameraParameters::KEY_RECORDING_HINT)) {
+        isVideo = (!strcmp(params.get(android::CameraParameters::KEY_RECORDING_HINT), "true"));
+    }
+
+    if (isVideo && id == 1) {
+        params.set("preview-format", "yuv420sp");
+    }
 
 #ifdef LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
