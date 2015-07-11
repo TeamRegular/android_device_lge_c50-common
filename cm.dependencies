@@ -1,7 +1,7 @@
 [
   {
-    "repository": "android_kernel_lge_g4stylus",
-    "target_path": "kernel/lge/g4stylus"
+    "repository": "android_kernel_lge_c50",
+    "target_path": "kernel/lge/c50"
   },
   {
     "repository": "android_device_qcom_common",

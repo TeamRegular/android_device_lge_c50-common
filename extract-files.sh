@@ -1,5 +1,10 @@
 #!/bin/bash
 
+set -e
+
+export VENDOR=lge
+export DEVICE=ms345
+
 function extract() {
     for FILE in `egrep -v '(^#|^$)' $1`; do
         OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
@@ -46,13 +51,9 @@ else
   fi
 fi
 
-BASE=../../../vendor/$VENDOR/g4stylus-common/proprietary
+BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
-DEVBASE=../../../vendor/$VENDOR/$DEVICE/proprietary
-rm -rf $DEVBASE/*
-
-extract ../../$VENDOR/g4stylus-common/proprietary-files.txt $BASE
-extract ../../$VENDOR/$DEVICE/proprietary-files.txt $DEVBASE
+extract ../../$VENDOR/$DEVICE/proprietary-files.txt $BASE
 
 ./setup-makefiles.sh

@@ -54,18 +54,15 @@ vendor/lib/libmmcamera2_stats_algorithm.so
 vendor/lib/libmmcamera2_stats_modules.so
 vendor/lib/libmmcamera2_vpe_module.so
 vendor/lib/libmmcamera2_wnr_module.so
+vendor/lib/libmmcamera_bf3905.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_hdr_lib.so
-vendor/lib/libmmcamera_hi841_eeprom.so
+vendor/lib/libmmcamera_hi544_eeprom.so
+vendor/lib/libmmcamera_hi544.so
+vendor/lib/libmmcamera_hi707.so
 vendor/lib/libmmcamera_imglib.so
-vendor/lib/libmmcamera_imx219_eeprom.so
-vendor/lib/libmmcamera_imx219.so
-vendor/lib/libmmcamera_ov5670_cowell.so
-vendor/lib/libmmcamera_ov5670_lgit.so
-vendor/lib/libmmcamera_ov5670.so
-vendor/lib/libmmcamera_s5k3l2_eeprom.so
-vendor/lib/libmmcamera_s5k3l2.so
+vendor/lib/libmmcamera_ov5648.so
 vendor/lib/libmmcamera_tintless_algo.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_wavelet_lib.so
@@ -97,37 +94,15 @@ lib/libchromatix_hi841_common.so
 lib/libchromatix_hi841_default_video.so
 lib/libchromatix_hi841_preview.so
 lib/libchromatix_hi841_snapshot.so
-lib/libchromatix_hi841_snapshot_panorama.so
-lib/libchromatix_imx219_default_video.so
-vendor/lib/libchromatix_imx219_common.so
-vendor/lib/libchromatix_imx219_imtech_common.so
-vendor/lib/libchromatix_imx219_imtech_default_video.so
-vendor/lib/libchromatix_imx219_imtech_preview.so
-vendor/lib/libchromatix_imx219_imtech_skt_default_video.so
-vendor/lib/libchromatix_imx219_imtech_snapshot.so
-vendor/lib/libchromatix_imx219_mms_video.so
-vendor/lib/libchromatix_imx219_preview.so
-vendor/lib/libchromatix_imx219_skt_default_video.so
-vendor/lib/libchromatix_imx219_snapshot_panorama.so
-vendor/lib/libchromatix_imx219_snapshot.so
-vendor/lib/libchromatix_ov5670_common.so
-vendor/lib/libchromatix_ov5670_cowell_common.so
-vendor/lib/libchromatix_ov5670_cowell_default_video.so
-vendor/lib/libchromatix_ov5670_cowell_liveshot.so
-vendor/lib/libchromatix_ov5670_cowell_skt_video.so
-vendor/lib/libchromatix_ov5670_cowell_snapshot.so
-vendor/lib/libchromatix_ov5670_default_video.so
-vendor/lib/libchromatix_ov5670_lgit_common.so
-vendor/lib/libchromatix_ov5670_lgit_default_video.so
-vendor/lib/libchromatix_ov5670_lgit_liveshot.so
-vendor/lib/libchromatix_ov5670_lgit_snapshot.so
-vendor/lib/libchromatix_ov5670_liveshot.so
-vendor/lib/libchromatix_ov5670_snapshot.so
-vendor/lib/libchromatix_s5k3l2_common.so
-vendor/lib/libchromatix_s5k3l2_default_video.so
-vendor/lib/libchromatix_s5k3l2_preview.so
-vendor/lib/libchromatix_s5k3l2_snapshot_panorama.so
-vendor/lib/libchromatix_s5k3l2_snapshot.so
+vendor/lib/libchromatix_hi544_common.so
+vendor/lib/libchromatix_hi544_default_video.so
+vendor/lib/libchromatix_hi544_preview.so
+vendor/lib/libchromatix_hi544_snapshot.so
+vendor/lib/libchromatix_ov5648_common.so
+vendor/lib/libchromatix_ov5648_default_video_hd.so
+vendor/lib/libchromatix_ov5648_default_video.so
+vendor/lib/libchromatix_ov5648_preview.so
+vendor/lib/libchromatix_ov5648_snapshot.so
 
 # Camera firmware
 etc/firmware/cpp_firmware_v1_1_1.fw
@@ -258,10 +233,33 @@ vendor/lib/libsmemlog.so
 # Radio
 -app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 -app/shutdownlistener/shutdownlistener.apk
+bin/netmgrd
+bin/qmuxd
+bin/radish
+bin/rfs_access
+bin/rmt_storage
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
+lib/libril.so
+lib/librmnetctl.so
+lib/libuicc.so
+lib/libvss_common_idl.so
+lib/libvss_common_iface.so
+lib/libvss_nv_idl.so
+lib/libvss_nv_iface.so
+lib/libvss_resim_idl.so
+lib/libvss_resim_iface.so
+vendor/lib/libcneapiclient.so
+vendor/lib/libconfigdb.so
+vendor/lib/libmdmdetect.so
+vendor/lib/libnetmgr.so
+vendor/lib/libperipheral_client.so
+vendor/lib/libril-qc-qmi-1.so
+vendor/lib/libril-qcril-hook-oem.so
+vendor/lib/libsystem_health_mon.so
+vendor/lib/libxml.so
 
 # Sensors
 bin/sensord
@@ -280,6 +278,15 @@ vendor/lib/libthermalioctl.so
 bin/time_daemon
 vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
+
+# Venus (media) firmware
+etc/firmware/venus.b00
+etc/firmware/venus.b01
+etc/firmware/venus.b02
+etc/firmware/venus.b03
+etc/firmware/venus.b04
+etc/firmware/venus.mbn
+etc/firmware/venus.mdt
 
 # WCNSS
 etc/firmware/wcnss.b00

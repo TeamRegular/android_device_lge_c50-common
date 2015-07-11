@@ -1,0 +1,1 @@
+add_lunch_combo cm_ms345-userdebug

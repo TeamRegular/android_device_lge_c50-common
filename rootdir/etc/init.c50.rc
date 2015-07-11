@@ -25,7 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.g4stylus.usb.rc
+import init.c50.usb.rc
 import init.qcom.power.rc
 
 on early-init
@@ -46,9 +46,7 @@ on init
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
     mkdir /storage/sdcard1 0700 root root
-    mkdir /storage/usbdisk 0700 root root
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export SECONDARY_STORAGE /storage/sdcard1
@@ -61,27 +59,23 @@ on init
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
-    # START touch_driver
+    # Touch LPWG
     chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
     chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_data
     chown system system /sys/devices/virtual/input/lge_touch/lpwg_notify
     chmod 664 /sys/devices/virtual/input/lge_touch/lpwg_notify
-    chown system system /sys/devices/virtual/input/lge_touch/ts_noise_log_enable
-    chmod 664 /sys/devices/virtual/input/lge_touch/ts_noise_log_enable
-    chown system system /sys/devices/virtual/input/lge_touch/ts_noise
-    chmod 664 /sys/devices/virtual/input/lge_touch/ts_noise
-    chmod 664 /sys/devices/virtual/input/lge_touch/quick_cover_status
-    chown system system /sys/devices/virtual/input/lge_touch/quick_cover_status
     chown system lgkeyguard /sys/devices/virtual/input/lge_touch/keyguard
     chmod 664 /sys/devices/virtual/input/lge_touch/keyguard
-    chown system system /sys/devices/virtual/input/lge_touch/pen_support
-    chmod 664 /sys/devices/virtual/input/lge_touch/pen_support
-    chown system system /sys/devices/virtual/input/lge_touch/ime_status
-    chmod 664 /sys/devices/virtual/input/lge_touch/ime_status
-    chown system system /sys/devices/virtual/input/lge_touch/rawdata
-    chmod 664 /sys/devices/virtual/input/lge_touch/rawdata
-    chown system system /sys/devices/virtual/input/lge_touch/use_quick_window
-    chmod 664 /sys/devices/virtual/input/lge_touch/use_quick_window
+    chown system system /sys/devices/virtual/input/lge_touch/dsv
+    chmod 600 /sys/devices/virtual/input/lge_touch/dsv
+    chown system system /sys/devices/virtual/input/lge_touch/lpwg_debug
+    chmod 600 /sys/devices/virtual/input/lge_touch/lpwg_debug
+    chown system system /sys/devices/virtual/input/lge_touch/lpwg_fail_reason
+    chmod 600 /sys/devices/virtual/input/lge_touch/lpwg_fail_reason
+    chown system system /sys/devices/virtual/input/lge_touch/sensor_value
+    chmod 600 /sys/devices/virtual/input/lge_touch/sensor_value
+    chown system system /sys/devices/virtual/input/lge_touch/enable_sensor_interlock
+    chmod 600 /sys/devices/virtual/input/lge_touch/enable_sensor_interlock
 
 on fs
     mount_all fstab.g4stylus
@@ -111,7 +105,6 @@ on post-fs-data
 
     chown system system /mpt
     chmod 0775 /mpt
-    write /proc/sys/vm/vfs_cache_pressure 10000
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -214,6 +207,7 @@ on boot
     chown system input /sys/devices/virtual/input/lge_proximity/dark_threshold
     chown system input /sys/devices/virtual/input/lge_proximity/ch0data
     chown system input /sys/devices/virtual/input/lge_proximity/ch1data
+    chown system input /sys/devices/virtual/input/lge_proximity/ppcount
 
     chmod 0660 /sys/devices/virtual/input/lge_accelerometer/SleepDur
     chmod 0660 /sys/devices/virtual/input/lge_accelerometer/bandwidth
@@ -279,16 +273,9 @@ on boot
     chmod 0660 /sys/devices/virtual/input/lge_proximity/dark_threshold
     chmod 0440 /sys/devices/virtual/input/lge_proximity/ch0data
     chmod 0440 /sys/devices/virtual/input/lge_proximity/ch1data
+    chmod 0660 /sys/devices/virtual/input/lge_proximity/ppcount
 
     write /sys/module/lowmemorykiller/parameters/lmk_fast_run 0
-
-    # LED
-    chown system system /sys/class/leds/red/pattern_id
-    chmod 0664 /sys/class/leds/red/pattern_id
-    chown system system /sys/class/leds/red/timed
-    chmod 0664 /sys/class/leds/red/timed
-    chown system system /sys/class/leds/red/time_on_off
-    chmod 0664 /sys/class/leds/red/time_on_off
 
     # pm debug mask enable(clock/resume irq)
     write /sys/kernel/debug/clk/debug_suspend 1
@@ -473,10 +460,6 @@ on post-fs-data
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
 
-    # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
-
     setprop vold.post_fs_data_done 1
 
 on property:init.svc.wpa_supplicant=stopped
@@ -636,10 +619,6 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw
     class late_start
     disabled
     oneshot
-
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
-     class late_start
-     disabled
 
 # Binding fuse mount point to /storage/emulated/legacy
 on property:init.svc.sdcard=running

@@ -1,5 +1,5 @@
 #
-# Copyright 2014 The CyanogenMod Project
+# Copyright 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,18 +14,15 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := $(call my-dir)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-ifneq ($(filter ms345, $(TARGET_DEVICE)),)
+# Inherit from ms345 device
+$(call inherit-product, device/lge/ms345/device.mk)
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
-
-include $(CLEAR_VARS)
-
-# Create a link for the WCNSS config file, which ends up as a writable
-# version in /data/misc/wifi
-$(shell mkdir -p $(TARGET_OUT)/etc/firmware/wlan/prima; \
-    ln -sf /data/misc/wifi/WCNSS_qcom_cfg.ini \
-	    $(TARGET_OUT)/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini)
-
-endif
+# Set those variables here to overwrite the inherited values.
+PRODUCT_DEVICE := ms345
+PRODUCT_NAME := full_ms345
+PRODUCT_BRAND := lge
+PRODUCT_MODEL := LGMS345
+PRODUCT_MANUFACTURER := LGE

@@ -14,9 +14,9 @@
 # limitations under the License.
 
 # inherit from the proprietary version
--include vendor/lge/g4stylus-common/BoardConfigVendor.mk
+-include vendor/lge/ms345/BoardConfigVendor.mk
 
-LOCAL_PATH := device/lge/g4stylus-common
+LOCAL_PATH := device/lge/ms345
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -38,18 +38,26 @@ TARGET_NO_BOOTLOADER := true
 # Kernel
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=g4stylus user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 vmalloc=508m androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=c50 user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 vmalloc=504m androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x0008000 --ramdisk_offset 0x2000000
-TARGET_KERNEL_SOURCE := kernel/lge/g4stylus
+TARGET_KERNEL_CONFIG := cyanogenmod_ms345_defconfig
+TARGET_KERNEL_SOURCE := kernel/lge/c50
+
+# Partitions
+BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
 
 # Audio
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 BOARD_USES_ALSA_AUDIO := true
 
 # Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/ms345/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
@@ -93,18 +101,17 @@ TARGET_POWERHAL_VARIANT := qcom
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-TARGET_RECOVERY_DEVICE_DIRS += device/lge/g4stylus-common
-TARGET_RECOVERY_FSTAB := device/lge/g4stylus-common/rootdir/etc/fstab.g4stylus
+TARGET_RECOVERY_DEVICE_DIRS += device/lge/ms345
+TARGET_RECOVERY_FSTAB := device/lge/ms345/rootdir/etc/fstab.c50
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Radio
-BOARD_RIL_CLASS := ../../../device/lge/g4stylus-common/ril/
+BOARD_RIL_CLASS := ../../../device/lge/ms345/ril/
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_LGE_RIL_SYMBOLS
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-#BOARD_SEPOLICY_DIRS += device/lge/g4stylus-common/sepolicy
+#BOARD_SEPOLICY_DIRS += device/lge/ms345/sepolicy
 #BOARD_SEPOLICY_UNION += \
 
 # Time services

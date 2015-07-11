@@ -61,10 +61,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=LgeLteRIL \
     ro.use_data_netmgrd=true
 
-# Storage
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.isUsbOtgEnabled=true
-
 # Time
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true
