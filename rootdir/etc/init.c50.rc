@@ -78,7 +78,7 @@ on init
     chmod 600 /sys/devices/virtual/input/lge_touch/enable_sensor_interlock
 
 on fs
-    mount_all fstab.g4stylus
+    mount_all fstab.c50
 
     # Executing tune2fs to reserve some region in /data. (40MB)
     exec /system/bin/tune2fs -u system -r 10240 /dev/block/bootdevice/by-name/userdata
