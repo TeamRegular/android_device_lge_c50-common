@@ -709,3 +709,8 @@ service sensord /system/bin/sensord
     group system
     class late_start
     oneshot
+
+# Set baseband
+service set-baseband /system/bin/set-baseband
+    class late_start
+    oneshot

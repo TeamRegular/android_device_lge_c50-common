@@ -156,6 +156,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libxml2
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/set-baseband:system/bin/set-baseband
+
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8916.conf:system/etc/thermal-engine-8916.conf
