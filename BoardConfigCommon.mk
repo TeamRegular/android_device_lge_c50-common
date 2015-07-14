@@ -1,5 +1,5 @@
 #
-# Copyright 2015 The CyanogenMod Project
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,17 +12,21 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+# inherit from common msm8916
+-include device/lge/msm8916-common/BoardConfigCommon.mk
 
-# Inherit from ms345 device
-$(call inherit-product, device/lge/ms345/device.mk)
+LOCAL_PATH := device/lge/c50-common
 
-# Set those variables here to overwrite the inherited values.
-PRODUCT_DEVICE := ms345
-PRODUCT_NAME := full_ms345
-PRODUCT_BRAND := lge
-PRODUCT_MODEL := LGMS345
-PRODUCT_MANUFACTURER := LGE
+# Kernel
+BOARD_KERNEL_CMDLINE += vmalloc=504m
+
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
+# Recovery
+TARGET_RECOVERY_FSTAB := device/lge/c50-common/rootdir/etc/fstab.qcom
+
+# SELinux
+#BOARD_SEPOLICY_DIRS += device/lge/c50-common/sepolicy
+#BOARD_SEPOLICY_UNION += \
