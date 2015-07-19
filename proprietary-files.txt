@@ -161,11 +161,16 @@ vendor/lib/mediadrm/libwvdrmengine.so
 
 # GPS
 bin/location-mq
+bin/lowi-server
+bin/xtwifi-client
+bin/xtwifi-inet-agent
 etc/flp.conf
 etc/izat.conf
 etc/permissions/com.qualcomm.location.xml
 etc/quipc.conf
+etc/lowi.conf
 etc/sap.conf
+etc/xtwifi.conf
 lib/hw/gps.default.so
 lib/libgps.utils.so
 lib/libloc_api_v02.so
@@ -173,6 +178,7 @@ lib/libloc_core.so
 lib/libloc_ds_api.so
 lib/libloc_eng.so
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
+vendor/bin/slim_ap_daemon
 vendor/lib/hw/flp.default.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
