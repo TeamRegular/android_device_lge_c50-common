@@ -183,7 +183,7 @@ EOF
 
 LOCAL_PATH := \$(call my-dir)
 
-ifneq (\$(filter h631,\$(TARGET_DEVICE)),)
+ifneq (\$(filter h345 ms345,\$(TARGET_DEVICE)),)
 
 include \$(CLEAR_VARS)
 LOCAL_MODULE := com.qualcomm.location
