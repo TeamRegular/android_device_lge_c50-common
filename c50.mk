@@ -30,6 +30,13 @@ TARGET_SCREEN_WIDTH := 480
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
+# Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.audio.fluence.voicecall=none \
+    persist.audio.fluence.voicerec=none \
+    persist.audio.fluence.speaker=none \
+    ro.qc.sdk.audio.fluencetype=none
+
 # Audio configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
