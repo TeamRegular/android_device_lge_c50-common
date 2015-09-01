@@ -47,7 +47,7 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    light.msm8916
+    lights.msm8916
 
 # Media
 PRODUCT_COPY_FILES += \
