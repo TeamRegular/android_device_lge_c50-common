@@ -21,9 +21,6 @@ LOCAL_PATH := device/lge/c50-common
 # Kernel
 BOARD_KERNEL_CMDLINE += vmalloc=504m
 
-# CNE Feature
-TARGET_LDPRELOAD := libNimsWrap.so
-
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
