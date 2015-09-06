@@ -147,6 +147,7 @@ bin/location-mq
 bin/lowi-server
 bin/xtwifi-client
 bin/xtwifi-inet-agent
+etc/cacert_location.pem
 etc/flp.conf
 etc/izat.conf
 etc/permissions/com.qualcomm.location.xml
@@ -154,6 +155,7 @@ etc/quipc.conf
 etc/lowi.conf
 etc/sap.conf
 etc/xtwifi.conf
+etc/xtra_root_cert.pem
 lib/hw/gps.default.so
 lib/libgps.utils.so
 lib/libloc_api_v02.so
